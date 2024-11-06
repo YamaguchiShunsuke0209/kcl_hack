@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/kcl_hack/static/css/main.039b384d.css",
+    "main.js": "/kcl_hack/static/js/main.e9765881.js",
+    "static/js/453.8214c2f8.chunk.js": "/kcl_hack/static/js/453.8214c2f8.chunk.js",
+    "index.html": "/kcl_hack/index.html",
+    "main.039b384d.css.map": "/kcl_hack/static/css/main.039b384d.css.map",
+    "main.e9765881.js.map": "/kcl_hack/static/js/main.e9765881.js.map",
+    "453.8214c2f8.chunk.js.map": "/kcl_hack/static/js/453.8214c2f8.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.039b384d.css",
+    "static/js/main.e9765881.js"
+  ]
+}
