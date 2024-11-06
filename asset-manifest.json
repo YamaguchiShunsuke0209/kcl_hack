@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/mahjong-calculator/static/css/main.039b384d.css",
+    "main.css": "/mahjong-calculator/static/css/main.365f0c46.css",
     "main.js": "/mahjong-calculator/static/js/main.03a68d3a.js",
     "static/js/453.8214c2f8.chunk.js": "/mahjong-calculator/static/js/453.8214c2f8.chunk.js",
     "index.html": "/mahjong-calculator/index.html",
-    "main.039b384d.css.map": "/mahjong-calculator/static/css/main.039b384d.css.map",
+    "main.365f0c46.css.map": "/mahjong-calculator/static/css/main.365f0c46.css.map",
     "main.03a68d3a.js.map": "/mahjong-calculator/static/js/main.03a68d3a.js.map",
     "453.8214c2f8.chunk.js.map": "/mahjong-calculator/static/js/453.8214c2f8.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.039b384d.css",
+    "static/css/main.365f0c46.css",
     "static/js/main.03a68d3a.js"
   ]
 }
