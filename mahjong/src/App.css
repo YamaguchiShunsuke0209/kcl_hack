@@ -76,19 +76,21 @@ h2 {
   height: 55px;
   width: 110px;
   margin: 20px;
+  border: solid 0.5px;
+  border-radius: 5px;
 }
 
 .fuButton {
   height: 60px;
   width: 150px;
   margin: 20px;
+  border: solid 0.5px;
+  border-radius: 5px;
 }
 
 
 .on {
   background-color: #0d0;
-  border: solid 1px;
-  border-radius: 3px;
   font-weight: bold;
 }
 
@@ -97,6 +99,8 @@ h2 {
   width: 30%;
   margin: 30px;
   color: blue;
+  border: solid 0.5px;
+  border-radius: 5px;
 }
 
 .submitButton {
@@ -104,4 +108,6 @@ h2 {
   width: 30%;
   margin: 30px;
   color: red;
+  border: solid 0.5px;
+  border-radius: 5px;
 }
