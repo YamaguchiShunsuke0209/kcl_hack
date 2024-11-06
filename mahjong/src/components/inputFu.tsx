@@ -1,32 +1,43 @@
-import React, { createContext, useContext, useState } from "react";
+import React, { createContext, useContext, useEffect, useState } from "react";
 import { FuContext } from "./yakuButtons";
 import FuButton from "./fuButton";
+import { disabledContext } from "../App";
 
 type props = {
     key: number;
     tsumo: boolean;
     menzen: boolean;
+    displayInputFu?: boolean;
 }
 
 export const ActiveContext = createContext<any>(0);
 
-const InputFu = ({key, tsumo, menzen}: props) => {
+const InputFu = ({key, tsumo, menzen, displayInputFu}: props) => {
     const [head, setHead] = useState(0);
     const [wait, setWait] = useState(0);
     const [, setFu] = useContext(FuContext);
+    const [activeList, ] =useContext(disabledContext)
     const [active, setActive] = useState<any>({
+        "数牌・客風牌": true,
         "自風牌・三元牌": false,
         "連風牌": false,
-        "数牌・客風牌": false,
-        "両面・双碰": false,
+        "両面・双碰": true,
         "嵌張・辺張・単騎": false
     });
 
-    const handleHead = (name: string) => {
-        if(active[name]){
-            setActive((prev: any) => ({...prev, [name]: false}));
+    useEffect(() => {
+        if(!displayInputFu){
+            Object.keys(active).forEach((key:string) => setActive((prev: any) => ({...prev, [key]: false})));
             setHead(0);
+            setWait(0);
         }else{
+            setActive((prev: any) => ({...prev, "数牌・客風牌": true}));
+            setActive((prev: any) => ({...prev, "両面・双碰": true}));
+        }
+    }, [activeList]);
+
+    const handleHead = (name: string) => {
+        if(!active[name]){
             setActive((prev: any) => ({...prev, [name]: true}));
             if(name === "自風牌・三元牌"){
                 setActive((prev: any) => ({...prev, "連風牌": false}))
@@ -45,10 +56,7 @@ const InputFu = ({key, tsumo, menzen}: props) => {
     }
 
     const handleWait = (name: string) => {
-        if(active[name]){
-            setActive((prev: any) => ({...prev, [name]: false}));
-            setWait(0);
-        }else{
+        if(!active[name]){
             setActive((prev: any) => ({...prev, [name]: true}));
             if(name === "両面・双碰"){
                 setActive((prev: any) => ({...prev, "嵌張・辺張・単騎": false}));
@@ -99,6 +107,8 @@ const InputFu = ({key, tsumo, menzen}: props) => {
         }
     };
 
+    const disabledStyle = menzen? {opacity: '0.5', userSelect: 'none'}: undefined;
+
 
     return(
         <>
@@ -128,6 +138,8 @@ const InputFu = ({key, tsumo, menzen}: props) => {
                         min="0"
                         max="4"
                         onInput={handleInputFu}
+                        disabled={menzen}
+                        style={disabledStyle as React.CSSProperties}
                     ></input>
                 </div>
                 <div className="inputFu">
@@ -154,6 +166,8 @@ const InputFu = ({key, tsumo, menzen}: props) => {
                         min="0"
                         max="4"
                         onInput={handleInputFu}
+                        disabled={menzen}
+                        style={disabledStyle as React.CSSProperties}
                     ></input>
                 </div>
             </div>
@@ -186,6 +200,8 @@ const InputFu = ({key, tsumo, menzen}: props) => {
                             min="0"
                             max="4"
                             onInput={handleInputFu}
+                            disabled={menzen}
+                            style={disabledStyle as React.CSSProperties}
                         ></input>
                     </div>
                 </div>
@@ -216,6 +232,8 @@ const InputFu = ({key, tsumo, menzen}: props) => {
                             min="0"
                             max="4"
                             onInput={handleInputFu}
+                            disabled={menzen}
+                            style={disabledStyle as React.CSSProperties}
                         ></input>
                     </div>
                 </div>
@@ -223,9 +241,9 @@ const InputFu = ({key, tsumo, menzen}: props) => {
             <ActiveContext.Provider value={[active, setActive]}>
                 <div>
                     <h3>雀頭</h3>
+                    <FuButton key={key+102} name={"数牌・客風牌"} onClick={handleHead}/>
                     <FuButton key={key+100} name={"自風牌・三元牌"} onClick={handleHead}/>
                     <FuButton key={key+101} name={"連風牌"} onClick={handleHead}/>
-                    <FuButton key={key+102} name={"数牌・客風牌"} onClick={handleHead}/>
                 </div>
                 <div>
                     <h3>待ち</h3>

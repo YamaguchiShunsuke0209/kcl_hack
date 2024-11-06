@@ -125,7 +125,7 @@ const YakuButtons = () => {
                             <IsMenzen key={key} tsumo={hora === "tsumo"}/>
                         </YakumanContext.Provider>
                     </HanContext.Provider>
-                    <div className="" style={displayInputFu? undefined : {userSelect: 'none', pointerEvents: 'none', opacity: '0.4'}}><InputFu key={key} tsumo={hora === "tsumo"} menzen={menzen}/></div>
+                    <div className="" style={displayInputFu? undefined : {userSelect: 'none', pointerEvents: 'none', opacity: '0.4'}}><InputFu key={key} tsumo={hora === "tsumo"} menzen={menzen} displayInputFu={displayInputFu}/></div>
                 </FuContext.Provider>
                 <div>
                     <button className="resetButton" onClick={() => {
@@ -163,7 +163,7 @@ const YakuButtons = () => {
                             <NotMenzen key={key} tsumo={hora === "tsumo"}/>
                         </YakumanContext.Provider>
                     </HanContext.Provider>
-                    <div className="" style={displayInputFu? undefined : {userSelect: 'none', pointerEvents: 'none', opacity: '0.4'}}><InputFu key={key} tsumo={hora === "tsumo"} menzen={menzen}/></div>
+                    <div className="" style={displayInputFu? undefined : {userSelect: 'none', pointerEvents: 'none', opacity: '0.4'}}><InputFu key={key} tsumo={hora === "tsumo"} menzen={menzen} displayInputFu={displayInputFu}/></div>
                 </FuContext.Provider>
                 <div>
                     <button className="resetButton" onClick={() => {
