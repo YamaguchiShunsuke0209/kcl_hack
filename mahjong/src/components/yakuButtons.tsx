@@ -49,7 +49,14 @@ const YakuButtons = () => {
 
     const inputResult = () => {
         if(yakuman === 0){
-            if(han+dora[0]+dora[1] <= 4){
+            if(fu === 0){
+                setResult("error");
+                setPoint("");
+                setTimeout(() => {
+                    scroll.scrollToBottom();
+                }, 0);
+                return;
+            }else if(han+dora[0]+dora[1] <= 4){
                 if(han+dora[0]+dora[1] === 4 && fu >= 30){
                     setResult(`${han+dora[0]+dora[1]}翻 ${fu}符　　満貫`);
                 }else if(han+dora[0]+dora[1] === 3 && fu >= 60){

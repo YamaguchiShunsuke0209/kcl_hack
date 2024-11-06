@@ -94,6 +94,8 @@ const InputFu = ({key, tsumo, menzen}: props) => {
             setFu(100);
         }else if(fuValue <= 110){
             setFu(110);
+        }else{
+            setFu(0);
         }
     };
 
