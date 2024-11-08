@@ -6,6 +6,15 @@
   user-select: none;
 }
 
+.App-header {
+  width: 100%;
+  position: fixed;
+  top: 0;
+  z-index: 1;
+  text-align: center;
+  background-color: white;
+}
+
 .App-header h1 {
   font-size: 50px;
   color: green;
@@ -13,6 +22,7 @@
 
 .mainContent {
   max-width: 1200px;
+  margin-top: 220px;
 }
 
 .options {
@@ -95,9 +105,10 @@ h2 {
 }
 
 .resetButton {
-  height: 70px;
-  width: 30%;
-  margin: 30px;
+  height: 50px;
+  width: 20%;
+  margin-right: 50px;
+  margin-top: 10px;
   color: blue;
   border: solid 0.5px;
   border-radius: 5px;
@@ -105,9 +116,20 @@ h2 {
 
 .submitButton {
   height: 70px;
-  width: 30%;
+  width: 50%;
   margin: 30px;
   color: red;
   border: solid 0.5px;
   border-radius: 5px;
+}
+
+.result{
+  margin-top: 20px;
+  margin-bottom: 40px;
+}
+
+.result p{
+  font-size: x-large;
+  margin: 10px;
+
 }

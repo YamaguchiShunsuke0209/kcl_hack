@@ -56,9 +56,9 @@ function App() {
 
   return (
     <div className="App">
-      <header className="App-header">
+      <div className='App-header'>
         <h1>麻雀点数計算</h1>
-      </header>
+      </div>
       <body>
         <disabledContext.Provider value={[activeList, setActiveList]}>
           <YakuButtons/>

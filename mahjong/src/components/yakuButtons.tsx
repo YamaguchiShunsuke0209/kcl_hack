@@ -82,8 +82,9 @@ const YakuButtons = () => {
         }
         judgePoint({setPoint, parent, hora, yakuman, han, fu, dora});
         setTimeout(() => {
-            scroll.scrollToBottom();
+            
         }, 0);
+        scroll.scrollToBottom();
     }
 
     const submitDisabled = han === 0 && yakuman === 0
@@ -105,77 +106,87 @@ const YakuButtons = () => {
     if(menzen){
         return(
             <div className="mainContent">
-                <div className="options">
-                    <RadioButton
-                        hora={hora}
-                        menzen={menzen}
-                        parent={parent}
-                        handleHora={handleHora}
-                        handleMenzen={handleMenzen}
-                        handleParent={handleParent}
-                        handleReset={handleReset}
-                    />
+                <div className='App-header'>
+                    <h1>麻雀点数計算</h1>
+                    <div className={`options radios`}>
+                        <button className="resetButton" onClick={() => {
+                            handleReset();
+                            setMenzen(true);
+                            setHora("tsumo")
+                            setParent("child")
+                        }}>リセット</button>
+                        <RadioButton
+                            hora={hora}
+                            menzen={menzen}
+                            parent={parent}
+                            handleHora={handleHora}
+                            handleMenzen={handleMenzen}
+                            handleParent={handleParent}
+                            handleReset={handleReset}
+                        />
+                    </div>
                 </div>
-                <div className="options">
-                    <InputDora key={key} onInput={handleInputDora}/>
-                </div>
+                    <div className="options">
+                        <InputDora key={key} onInput={handleInputDora}/>
+                    </div>
+                
                 <FuContext.Provider value={[fu, setFu]}>
                     <HanContext.Provider value={[han, setHan]}>
                         <YakumanContext.Provider value={[yakuman, setYakuman]}>
                             <IsMenzen key={key} tsumo={hora === "tsumo"}/>
                         </YakumanContext.Provider>
                     </HanContext.Provider>
-                    <div className="" style={displayInputFu? undefined : {userSelect: 'none', pointerEvents: 'none', opacity: '0.4'}}><InputFu key={key} tsumo={hora === "tsumo"} menzen={menzen} displayInputFu={displayInputFu}/></div>
+                    <div className="fuBox" style={displayInputFu? undefined : {userSelect: 'none', pointerEvents: 'none', opacity: '0.4'}}><InputFu key={key} tsumo={hora === "tsumo"} menzen={menzen} displayInputFu={displayInputFu}/></div>
                 </FuContext.Provider>
                 <div>
-                    <button className="resetButton" onClick={() => {
-                        handleReset();
-                        setMenzen(true);
-                        setHora("tsumo")
-                        setParent("child")
-                    }}>リセット</button>
+                    
                     <button className="submitButton" onClick={() => {inputResult()}} disabled={submitDisabled}>決定</button>
                 </div>
-                <div className='result'><p>{result}</p></div>
-                <div><p>{point}</p></div>
+                <div className='result'>
+                    <p>{result}</p>
+                    <p>{point}</p>
+                </div>
             </div>
         );
     } else {
         return(
             <div className="mainContent">
-                <div className="options">
-                    <RadioButton
-                        hora={hora}
-                        menzen={menzen}
-                        parent={parent}
-                        handleHora={handleHora}
-                        handleMenzen={handleMenzen}
-                        handleParent={handleParent}
-                        handleReset={handleReset}
-                    />
+                <div className='App-header'>
+                    <h1>麻雀点数計算</h1>
+                    <div className={`options radios`}>
+                        <button className="resetButton" onClick={() => {
+                            handleReset();
+                            setMenzen(true);
+                            setHora("tsumo")
+                            setParent("child")
+                        }}>リセット</button>
+                        <RadioButton
+                            hora={hora}
+                            menzen={menzen}
+                            parent={parent}
+                            handleHora={handleHora}
+                            handleMenzen={handleMenzen}
+                            handleParent={handleParent}
+                            handleReset={handleReset}
+                        />
+                    </div>
                 </div>
-                <div className="options">
-                    <InputDora key={key} onInput={handleInputDora}/>
-                </div>
+                    <div className="options">
+                        <InputDora key={key} onInput={handleInputDora}/>
+                    </div>
                 <FuContext.Provider value={[fu, setFu]}>
                     <HanContext.Provider value={[han, setHan]}>
                         <YakumanContext.Provider value={[yakuman, setYakuman]}>
                             <NotMenzen key={key} tsumo={hora === "tsumo"}/>
                         </YakumanContext.Provider>
                     </HanContext.Provider>
-                    <div className="" style={displayInputFu? undefined : {userSelect: 'none', pointerEvents: 'none', opacity: '0.4'}}><InputFu key={key} tsumo={hora === "tsumo"} menzen={menzen} displayInputFu={displayInputFu}/></div>
+                    <div className="fuBox" style={displayInputFu? undefined : {userSelect: 'none', pointerEvents: 'none', opacity: '0.4'}}><InputFu key={key} tsumo={hora === "tsumo"} menzen={menzen} displayInputFu={displayInputFu}/></div>
                 </FuContext.Provider>
                 <div>
-                    <button className="resetButton" onClick={() => {
-                        handleReset();
-                        setMenzen(true);
-                        setHora("tsumo")
-                        setParent("child")
-                    }}>リセット</button>
                     <button className="submitButton" onClick={() => {inputResult()}} disabled={submitDisabled}>決定</button>
                 </div>
                 <div className='result'><p>{result}</p></div>
-                <div><p>{point}</p></div>
+                <div className='result'><p>{point}</p></div>
             </div>
         );
     }

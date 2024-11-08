@@ -2,12 +2,13 @@ import React, { createContext, useContext, useEffect, useState } from "react";
 import { FuContext } from "./yakuButtons";
 import FuButton from "./fuButton";
 import { disabledContext } from "../App";
+import { yakuList } from "./yakuList";
 
 type props = {
     key: number;
     tsumo: boolean;
     menzen: boolean;
-    displayInputFu?: boolean;
+    displayInputFu: boolean;
 }
 
 export const ActiveContext = createContext<any>(0);
@@ -31,9 +32,13 @@ const InputFu = ({key, tsumo, menzen, displayInputFu}: props) => {
             setHead(0);
             setWait(0);
         }else{
+            if(yakuList.some(yaku => activeList[yaku])){
+                return;
+            }
             setActive((prev: any) => ({...prev, "数牌・客風牌": true}));
             setActive((prev: any) => ({...prev, "両面・双碰": true}));
         }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [activeList]);
 
     const handleHead = (name: string) => {

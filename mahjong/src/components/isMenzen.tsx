@@ -38,6 +38,10 @@ const IsMenzen = ({key, tsumo}: props) => {
                 setYakuman((prev: number) => prev+Number(hanNum));
             }else{
                 setHan((prev: number) => prev+hanNum);
+                if(tsumo && !activeList["門前清自摸和"]){
+                    setActiveList((prev: any) => ({...prev, "門前清自摸和": true}));
+                    setHan((prev: number) => prev+1);
+                }
                 if(name === "平和"){
                     setFu(20);
                 }
@@ -66,7 +70,7 @@ const IsMenzen = ({key, tsumo}: props) => {
             <div className={'buttonBox'}>
                 <OnOffButton key={key+1} han={1} plus={handleClick} name="立直" disabled={activeList["ダブル立直"] || isYakuman}/>
                 <OnOffButton key={key+2} han={1} plus={handleClick} name="一発" disabled={(!activeList["立直"] && !activeList["ダブル立直"]) || isYakuman}/>
-                <OnOffButton key={key+3} han={1} plus={handleClick} name="門前清自摸和" disabled={!tsumo}/>
+                <OnOffButton key={key+3} han={1} plus={handleClick} name="門前清自摸和" disabled={!tsumo || isYakuman}/>
                 <OnOffButton key={key-3} han={1} plus={handleClick} name="平和" disabled={yakuhai || activeList["七対子"] || activeList["三色同刻"] || isYakuman}/>
                 <OnOffButton key={key+4} han={1} plus={handleClick} name="断么九" disabled={activeList["清一色"] || activeList["混全帯么九"] || activeList["純全帯么九"] || activeList["一気通貫"] || activeList["混老頭"] || activeList["混一色"] || yakuhai || isYakuman}/>
                 <OnOffButton key={key+5} han={1} plus={handleClick} name="一盃口"disabled={activeList["二盃口"] || activeList["三槓子"] || activeList["混老頭"] || activeList["三暗刻"] || activeList["対々和"] || activeList["七対子"] || activeList["三色同刻"] || isYakuman}/>
